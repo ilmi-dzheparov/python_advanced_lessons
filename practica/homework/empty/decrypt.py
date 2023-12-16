@@ -22,6 +22,3 @@ def decrypt(text: str) -> None:
 
 
 decrypt(data)
-
-
-

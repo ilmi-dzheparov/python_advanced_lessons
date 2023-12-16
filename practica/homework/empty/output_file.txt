@@ -162,3 +162,4 @@ root        3657  0.0  0.0      0     0 ?        I    07:40   0:00 [kworker/u2:0
 root        3663  0.0  0.0      0     0 ?        I    07:45   0:00 [kworker/u2:1-events_unbound]
 ilmi        3786  0.1  0.1  14088  5760 pts/1    Ss   07:49   0:00 /bin/bash --rcfile /snap/pycharm-community/355/plugins/terminal/shell-integrations/bash/bash-integration.bash -i
 ilmi        3800  0.0  0.0  15204  3456 pts/1    R+   07:50   0:00 ps aux
+

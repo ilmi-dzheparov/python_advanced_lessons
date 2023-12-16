@@ -17,6 +17,7 @@ GREETINGS = (
 
 @app.route('/hello-world/<name>')
 def hello_world(name: str) -> str:
+
     weekday: int = datetime.today().weekday()
     greeting: str = GREETINGS[weekday]
     return f'Привет, {name}. {greeting}!'
