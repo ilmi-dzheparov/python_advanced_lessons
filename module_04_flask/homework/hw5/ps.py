@@ -7,15 +7,23 @@
 
 /ps?arg=a&arg=u&arg=x
 """
+import subprocess
+import shlex
+from typing import List
 
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
 
 @app.route("/ps", methods=["GET"])
 def ps() -> str:
-    ...
+    args: List[str] = request.args.getlist('arg')
+    quoted_command_list = ["ps",] + [shlex.quote(param) for param in args]
+    print(quoted_command_list)
+    result = subprocess.check_output(quoted_command_list).decode('utf-8')
+
+    return f"<pre>Your result:\n{result}<pre>"
 
 
 if __name__ == "__main__":
