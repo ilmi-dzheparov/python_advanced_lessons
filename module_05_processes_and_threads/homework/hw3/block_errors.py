@@ -9,7 +9,7 @@ from types import TracebackType
 
 class BlockErrors:
     def __init__(self, errors: Collection) -> None:
-        ...
+        self.errors = errors
 
     def __enter__(self) -> None:
         ...
@@ -20,4 +20,7 @@ class BlockErrors:
             exc_val: BaseException | None,
             exc_tb: TracebackType | None
     ) -> Literal[True] | None:
-        ...
+        if exc_type and issubclass(exc_type, tuple(self.errors)):
+            return True
+        else:
+            return None
