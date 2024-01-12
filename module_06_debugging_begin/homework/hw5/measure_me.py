@@ -8,9 +8,10 @@
 """
 import logging
 import random
+import sys
 from typing import List
 
-logger = logging.getLogger(__name__)
+
 
 
 def get_data_line(sz: int) -> List[int]:
@@ -26,8 +27,10 @@ def measure_me(nums: List[int]) -> List[List[int]]:
     results = []
     nums.sort()
 
+
     for i in range(len(nums) - 2):
         logger.debug(f"Iteration {i}")
+
         left = i + 1
         right = len(nums) - 1
         target = 0 - nums[i]
@@ -55,12 +58,39 @@ def measure_me(nums: List[int]) -> List[List[int]]:
                     right -= 1
 
     logger.debug("Leave measure_me")
+    # print(logger.handlers)
+    print(sys.stdout)
 
     return results
 
+def time_to_sec(time: str) -> float:
+    time = time.replace(",", ".")
+    time_l = time.split(":")
+    time_sec = int(time_l[0]) * 3600 + int(time_l[1]) * 3600 + float(time_l[2])
+    return time_sec
+
 
 if __name__ == "__main__":
-    logging.basicConfig(level="DEBUG")
+    logging.basicConfig(
+        level="DEBUG",
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        filename="mesure.log",
+        filemode="w",
+        # datefmt="%H:%M:%S.%f"
+    )
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+
+
+    # print(console_handler.)
+
     for it in range(15):
-        data_line = get_data_line(10 ** 3)
+        data_line = get_data_line(10 ** 1)
         measure_me(data_line)
+    with open("mesure.log", "r") as file:
+        lines = file.readlines()
+        time_begin = time_to_sec(lines[2].split()[1])
+        time_end = time_to_sec(lines[len(lines)-1].split()[1])
+        print(time_end, time_begin)
+        print(f"Время выполнения функции mesure_me: {time_end - time_begin:.3f} сек")
