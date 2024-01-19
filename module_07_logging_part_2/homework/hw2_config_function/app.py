@@ -2,8 +2,16 @@ import sys
 import logging
 from utils import string_to_operator
 
-logging.basicConfig(level="DEBUG")
+# logging.basicConfig(level="DEBUG")
+logger = logging.getLogger()
+logger.setLevel("DEBUG")
 app_logger = logging.getLogger("app")
+handler = logging.StreamHandler(stream=sys.stdout)
+formatter = logging.Formatter(
+    "%(levelname)s | %(name)s | %(asctime)s | %(lineno)s | %(message)s"
+)
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def calc(args):
@@ -42,4 +50,4 @@ def calc(args):
 
 if __name__ == '__main__':
     # calc(sys.argv[1:])
-    calc('a+3')
+    calc('2+9')

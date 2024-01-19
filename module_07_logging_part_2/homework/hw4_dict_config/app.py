@@ -1,10 +1,24 @@
 import sys
-import logging
+import logging.config
 from utils import string_to_operator
+from logger_helper import LevelFileHandler
+from logger_setup import dict_config
 
-logging.basicConfig(level="DEBUG")
-app_logger = logging.getLogger("app")
-
+# logging.basicConfig(level="DEBUG")
+# logger = logging.getLogger()
+# logger.setLevel("DEBUG")
+# app_logger = logging.getLogger("app")
+# handler = logging.StreamHandler(stream=sys.stdout)
+# file_handler = LevelFileHandler("call_debug.log", "call_error.log")
+# formatter = logging.Formatter(
+#     "%(levelname)s | %(name)s | %(asctime)s | %(lineno)s | %(message)s"
+# )
+# handler.setFormatter(formatter)
+# file_handler.setFormatter(formatter)
+# logger.addHandler(handler)
+# logger.addHandler(file_handler)
+logging.config.dictConfig(dict_config)
+app_logger = logging.getLogger("logger.app_logger")
 
 def calc(args):
     app_logger.debug("Start working function calc()")
@@ -42,4 +56,4 @@ def calc(args):
 
 if __name__ == '__main__':
     # calc(sys.argv[1:])
-    calc('a+3')
+    calc('2+9')
