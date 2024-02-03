@@ -4,6 +4,7 @@
 Пользователю возвращается результат работы программы, а если время, отведённое на выполнение кода, истекло,
 то процесс завершается, после чего отправляется сообщение о том, что исполнение кода не уложилось в данное время.
 """
+
 import shlex
 import subprocess
 from time import time
@@ -28,20 +29,27 @@ def run_python_code_in_subproccess(code: str, timeout: int):
         # command = ['python', '-c', code]
         # print(command)prlimit --nproc=1:1 --nofile=1024
         command = f'prlimit --nproc=1:1 python -c "{code}"'
-        res = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        res = subprocess.Popen(
+            command,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
         try:
             stdout, stderr = res.communicate(timeout=timeout)
         except subprocess.TimeoutExpired:
             res.terminate()
-            return {'stdout': '', 'stderr': 'Timeout is expired'}
+            return {"stdout": "", "stderr": "Timeout is expired"}
 
-        return {'stdout': stdout, 'stderr': stderr}
+        return {"stdout": stdout, "stderr": stderr}
     except subprocess.CalledProcessError as e:
-        print(f'Процесс завершился с ошибкой. Код возврата: {e.returncode}')
+        print(f"Процесс завершился с ошибкой. Код возврата: {e.returncode}")
 
     print(res)
 
-@app.route('/run_code', methods=['POST'])
+
+@app.route("/run_code", methods=["POST"])
 def run_code():
     form = CodeForm()
     if form.validate_on_submit():
@@ -50,11 +58,10 @@ def run_code():
         result = run_python_code_in_subproccess(code, timeout)
         return jsonify(result)
     else:
-        return jsonify({'error': f'Invalid input, {form.errors}'}), 400
+        return jsonify({"error": f"Invalid input, {form.errors}"}), 400
         # return f"Invalid input, {form.errors}"
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.config["WTF_CSRF_ENABLED"] = False
     app.run(debug=True)

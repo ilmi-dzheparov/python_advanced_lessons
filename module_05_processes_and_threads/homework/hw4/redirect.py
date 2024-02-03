@@ -6,6 +6,7 @@
 Аргументы контекстного менеджера должны быть непозиционными,
 чтобы можно было ещё перенаправить только stdout или только stderr.
 """
+
 import sys
 import traceback
 from types import TracebackType
@@ -19,7 +20,6 @@ class Redirect:
         # self.stdout_origin = sys.stdout
         # self.stderr_origin = sys.stderr
 
-
     def __enter__(self):
         if self.stdout is not None:
             sys.stdout = self.stdout
@@ -27,10 +27,10 @@ class Redirect:
             sys.stderr = self.stderr
 
     def __exit__(
-            self,
-            exc_type: Type[BaseException] | None,
-            exc_val: BaseException | None,
-            exc_tb: TracebackType | None
+        self,
+        exc_type: Type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
     ) -> Literal[True] | None:
         if exc_type:
             sys.stderr.write(traceback.format_exc())

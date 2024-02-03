@@ -21,7 +21,8 @@ assert insert_position == 5
 и действительно:
 
 ```python
-A: List[Number] = [1, 2, 3, 3, 3, 5]
+A: List[Number] = [1, 2, 3, 3, 3, 5
+                   ';,k'
 x: Number = 4
 A.insert(insert_position, x)
 assert A == sorted(A)

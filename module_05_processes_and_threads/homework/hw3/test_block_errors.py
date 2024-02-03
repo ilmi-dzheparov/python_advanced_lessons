@@ -11,13 +11,11 @@ class TestBlockErrors(unittest.TestCase):
         except:
             self.fail()
 
-
     def test_error_not_ignor(self):
         err_types = {ZeroDivisionError}
         with self.assertRaises(TypeError):
             with BlockErrors(err_types):
-                a = 1 / '0'
-
+                a = 1 / "0"
 
     def test_ignor_inner_block_and_not_ignor_outer_block(self):
         outer_err_types = {TypeError}
@@ -26,21 +24,18 @@ class TestBlockErrors(unittest.TestCase):
                 inner_err_types = {ZeroDivisionError}
                 with self.assertRaises(TypeError):
                     with BlockErrors(inner_err_types):
-                        a = 1 / '0'
+                        a = 1 / "0"
         except:
             self.fail()
-
 
     def test_child_error_ignor(self):
         err_types = {Exception}
         try:
             with BlockErrors(err_types):
-                a = 1 / '0'
+                a = 1 / "0"
         except:
             self.fail()
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
