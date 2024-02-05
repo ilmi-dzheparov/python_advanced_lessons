@@ -20,7 +20,7 @@ if __name__ == "__main__":
         result_2 = cursor.fetchone()[0]
         print(f"Cредняя зарплата по острову N: {result_2} гульденов")
 
-        """ 
+        """
         Определение медианной зарплаты по острову N
         """
         total = "SELECT COUNT(salary) FROM salaries"
