@@ -66,9 +66,7 @@ def update_work_schedule(cursor: sqlite3.Cursor) -> None:
         workers_by_date = get_list_of_workers_from_schedule_by_date(cursor, work_date)
         workers_by_date_check = get_list_of_workers_from_schedule_by_date(cursor, work_date)
         for worker_id in workers_by_date:
-            print(workers_by_date)
             if worker_id in workers_having_sport:
-                print(worker_id, work_date)
                 while True:
                     new_worker_id = random.randint(1, number_of_people)
                     if (

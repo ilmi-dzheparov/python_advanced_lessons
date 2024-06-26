@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if book %}
+<h1>Book: {{ book.title }}</h1>
+<h2>Author: {{ book.author }}</h2>
+<h2>Views: {{ book.count_of_views }}</h2>
+<h2>Description:</h2>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod turpis at massa mollis, non venenatis elit
+    eleifend. Integer faucibus erat id sapien convallis, vitae varius neque gravida. Donec vehicula nec libero vel
+    mattis. Pellentesque id felis sit amet lorem rutrum pellentesque. Aenean consequat felis at justo lobortis, eget
+    commodo lorem vestibulum. Duis vulputate orci in nisi consectetur, nec rutrum mauris interdum.
+</p>
+{% else %}
+<h2> Sorry, no book in DB with id: {{ id }}</h2>
+{% endif %}
+{% endblock %}
