@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "a1d954c9-8d35-4adc-bf59-0ed3c7bc6842",
+		"name": "hotel-api-level-3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31851846"
+	},
+	"item": [
+		{
+			"name": "get-room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"roomId\");",
+							"});",
+							"",
+							"pm.test(\"Response schema should match\", function () {",
+							"    const schema = {",
+							"        \"properties\": {",
+							"            \"rooms\": {",
+							"                \"items\": {",
+							"                    \"$id\": \"#/properties/rooms/items\",",
+							"                    \"anyOf\": [",
+							"                        {",
+							"                            {",
+							"                            \"type\": \"object\",",
+							"                            \"properties\": {",
+							"                                \"rooms\": {",
+							"                                \"type\": \"array\",",
+							"                                \"items\": {",
+							"                                    \"type\": \"object\",",
+							"                                    \"required\": [",
+							"                                    \"room\",",
+							"                                    \"link\"",
+							"                                    ],",
+							"                                \"properties\": {",
+							"                                \"room\": {",
+							"                                    \"type\": \"object\",",
+							"                                    \"required\": [",
+							"                                    \"roomId\",",
+							"                                    \"floor\",",
+							"                                    \"guestNum\",",
+							"                                    \"beds\",",
+							"                                    \"price\",",
+							"                                    ],",
+							"                                    \"properties\": {",
+							"                                    \"roomId\": {",
+							"                                        \"type\": \"integer\"",
+							"                                    },",
+							"                                    \"floor\": {",
+							"                                    \"type\": \"integer\"",
+							"                                    },",
+							"                                    \"guestNum\": {",
+							"                                        \"type\": \"integer\"",
+							"                                    },",
+							"                                    \"beds\": {",
+							"                                        \"type\": \"integer\"",
+							"                                    },",
+							"                                    \"price\": {",
+							"                                        \"type\": \"integer\"",
+							"                                    }",
+							"                                    }",
+							"                                },",
+							"                                    \"link\": {",
+							"                                        \"type\": \"object\",",
+							"                                        \"required\": [",
+							"                                        \"self_link\",",
+							"                                        \"booking_link\"",
+							"                                        ],",
+							"                                        \"properties\": {",
+							"                                        \"self_link\": {",
+							"                                            \"type\": \"string\",",
+							"                                            \"format\": \"uri\"",
+							"                                        },",
+							"                                        \"booking_link\": {",
+							"                                            \"type\": \"string\",",
+							"                                            \"format\": \"uri\"",
+							"                                        }",
+							"                                    }",
+							"          }",
+							"        }",
+							"      }",
+							"    }",
+							"  },",
+							"  \"required\": [",
+							"    \"rooms\"",
+							"  ]",
+							"}",
+							"                        }",
+							"                    ]",
+							"                }",
+							"            }",
+							"        }",
+							"    }",
+							"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+							"});",
+							"",
+							"const rooms = pm.response.json().rooms;",
+							"pm.environment.set(\"roomId\", rooms[rooms.length - 1].roomId);",
+							"pm.environment.set('roomRequest', pm.request)",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/room?checkIn={{checkInDate}}&checkOut={{checkOutDate}}&guestsNum=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"room"
+					],
+					"query": [
+						{
+							"key": "checkIn",
+							"value": "{{checkInDate}}"
+						},
+						{
+							"key": "checkOut",
+							"value": "{{checkOutDate}}"
+						},
+						{
+							"key": "guestsNum",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-room",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(pm.environment)",
+							"",
+							"pm.sendRequest(pm.variables.get(\"url\") + '/room', (err, res) => {",
+							"    let totalRooms = res.json().rooms.length;",
+							"    pm.environment.set('totalRoomsBeforeRequest', totalRooms);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.sendRequest(pm.variables.get(\"url\") + '/room', (err, res) => {",
+							"    let totalRooms = res.json().rooms.length;",
+							"    pm.test(\"Request should add new room to the service.\", () => {",
+							"        pm.expect(totalRooms).to.be.eql(pm.environment.get(\"totalRoomsBeforeRequest\") + 1)",
+							"    });",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"floor\": 1,\n    \"beds\": 1,\n    \"guestNum\": 2,\n    \"price\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/add-room",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"add-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.sendRequest(pm.environment.get('roomRequest'), function (err, res) {",
+							"    pm.test(\"Room resource is still accessible\", () => {",
+							"        pm.expect(res.code).to.be.eq(200);",
+							"    });",
+							"",
+							"    const responseBody = res.json();",
+							"",
+							"    const isRoomBooked = responseBody.rooms.filter((room) =>",
+							"        room.roomId == pm.environment.get('roomId')",
+							"    ).length == 0;",
+							"    ",
+							"    pm.test(\"Booked room is not accessible anymore\", () => {",
+							"        pm.expect(isRoomBooked).to.be.true;",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.sendRequest(pm.request, (err, res) => {",
+							"    pm.test(\"Can't book same room twice\", () => {",
+							"        pm.expect(res.code).to.be.eq(409); // CONFLICT",
+							"    });",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookingDates\": {\n    \"checkIn\": {{checkInDate}},\n    \"checkOut\": {{checkOutDate}}\n  },\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/room/{{roomId}}/booking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"room",
+						"{{roomId}}",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add new room!</h1>
+<form action="/add-room" method="post">
+    {{ form.hidden_tag() }}
+    <p><span>1</span>Floor</p>
+    <p>
+        <label>Floor</label>
+        {{ form.floor(size=100) }}
+        {% for error in form.floor.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <br>
+    <p><span>2</span>Beds</p>
+    <p>
+        <label>Beds</label>
+        {{ form.beds(size=100) }}
+        {% for error in form.beds.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <br>
+    <p><span>3</span>Guest number</p>
+    <p>
+        <label>Flore</label>
+        {{ form.guestNum(size=100) }}
+        {% for error in form.guestNum.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <br>
+    <p><span>4</span>Price</p>
+    <p>
+        <label>Price</label>
+        {{ form.price(size=100) }}
+        {% for error in form.price.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <br>
+    <p>
+        <input type="submit" name="Add room">
+    </p>
+</body>
+</html>
