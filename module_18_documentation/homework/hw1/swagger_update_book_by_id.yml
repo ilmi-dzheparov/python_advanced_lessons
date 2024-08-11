@@ -1,0 +1,18 @@
+tags:
+  - books
+parameters:
+  - in: path
+    name: book_id
+    required: true
+    description: ID of the book to update
+    type: integer
+    format: int64
+  - in: body
+    name: new books parameters
+    schema:
+      $ref: '#/definitions/Book'
+responses:
+  201:
+    description: The book has been updated
+    schema:
+      $ref: '#/definitions/Book'

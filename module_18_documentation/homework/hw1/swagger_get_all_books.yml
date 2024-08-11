@@ -1,0 +1,9 @@
+tags:
+  - books
+responses:
+  200:
+    description: Books data
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Book'

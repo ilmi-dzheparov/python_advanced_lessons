@@ -1,0 +1,16 @@
+tags:
+  - books
+parameters:
+  - in: path
+    name: book_id
+    required: true
+    description: ID of the book to delete
+    type: integer
+    format: int64
+responses:
+  200:
+    description: Books data
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Book'

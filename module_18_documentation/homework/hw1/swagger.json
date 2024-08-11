@@ -1,0 +1,95 @@
+{
+  "paths": {
+    "/api/authors": {
+      "get": {
+        "tags": [
+          "authors"
+        ],
+        "responses": {
+          "200": {
+            "description": "authors data",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Author"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "authors"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "new author parameters",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The author has been created",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      }
+    },
+    "/api/authors/{id}": {
+      "get": {
+        "tags": [
+          "authors"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "author_id",
+            "required": "true",
+            "description": "ID of the author to get list of books",
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of authors by author_id",
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "authors"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "author_id",
+            "required": "true",
+            "description": "ID of the author to delete",
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Books data",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

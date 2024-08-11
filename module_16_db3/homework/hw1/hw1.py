@@ -33,7 +33,7 @@ CREATE TABLE 'director' (
 CREATE_TABLE_MOVIE_DIRECTION = """
 DROP TABLE IF EXISTS "movie_direction";
 CREATE TABLE 'movie_direction' (
-    dir_id INTEGER NOT NULL REFERENCES director(dir_id) ON DELETE CASCADE,
+    dir_id,
     mov_id INTEGER NOT NULL REFERENCES movie(mov_id) ON DELETE CASCADE,
     PRIMARY KEY (dir_id, mov_id)  
 )
