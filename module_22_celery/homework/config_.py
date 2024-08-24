@@ -11,9 +11,9 @@ from celery import Celery
 
 # https://yandex.ru/support/mail/mail-clients/others.html
 
-SMTP_USER = "jilmi@yandex.ru"
+SMTP_USER = "mail@yandex.ru"
 SMTP_HOST = "smtp.yandex.com"
-SMTP_PASSWORD = "dvfwvvhhsoejwajg"
+SMTP_PASSWORD = "qwerty"
 SMTP_PORT = 587
 
 
@@ -24,8 +24,5 @@ def make_celery(app_name: str) -> Celery:
         broker="redis://localhost:6379/0",
         backend="redis://localhost:6379/0"
     )
-
-    # Опционально: конфигурация Celery может быть загружена из файла конфигурации
-    # celery.config_from_object('celery_config')
 
     return celery

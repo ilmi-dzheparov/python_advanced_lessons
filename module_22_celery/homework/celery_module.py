@@ -39,7 +39,7 @@ def send_email_task():
 
 @celery.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    # sender.add_periodic_task(15, send_email_task.s(), name="send_every_15_sec")
+    sender.add_periodic_task(15, send_email_task.s(), name="send_every_15_sec")
     sender.add_periodic_task(
         # crontab(),
         crontab(hour=12, minute=30, day_of_week=1),
