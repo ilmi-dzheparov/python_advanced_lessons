@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 
 import aiohttp
-import aiofiles
+# import aiofiles
 
 # URL = 'https://cataas.com/cat'
 URL = 'https://picsum.photos/200'
@@ -16,13 +16,20 @@ async def get_cat(client: aiohttp.ClientSession, idx: int) -> bytes:
     async with client.get(URL) as response:
         print(response.status)
         result = await response.read()
-        await write_to_disk(result, idx)
+        await asyncio.to_thread(write_to_disk, result, idx)
+        # write_to_disk(result, idx)
 
 
-async def write_to_disk(content: bytes, id: int):
-    file_path = "{}/{}.png".format(OUT_PATH, id)
-    async with aiofiles.open(file_path, mode='wb') as f:
-        await f.write(content)
+def write_to_disk(content: bytes, id: int):
+    file_path = "{}/cat_{}.png".format(OUT_PATH, id)
+    with open(file_path, 'wb') as f:
+        f.write(content)
+
+
+# async def write_to_disk(content: bytes, id: int):
+#     file_path = "{}/{}.png".format(OUT_PATH, id)
+#     async with aiofiles.open(file_path, mode='wb') as f:
+#         await f.write(content)
 
 
 async def get_all_cats():
