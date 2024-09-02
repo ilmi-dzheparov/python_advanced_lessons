@@ -5,7 +5,7 @@ import time
 import requests
 
 URL = 'https://picsum.photos/800'
-CATS_WE_WANT = 10
+CATS_WE_WANT = 100
 OUT_PATH = Path(__file__).parent / 'cats'
 OUT_PATH.mkdir(exist_ok=True, parents=True)
 OUT_PATH = OUT_PATH.absolute()
