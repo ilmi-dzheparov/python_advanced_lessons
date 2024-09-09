@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Andrea Barrows",
+    "has_sale": true,
+    "address": {
+      "city": "Harveychester",
+      "street_name": "Von Views",
+      "building_number": "2744",
+      "secondary_address": "Suite 889",
+      "country": "Moldova, Republic of",
+      "country_code": "TZ"
+    },
+    "coffee_id": 9
+  },
+  {
+    "id": 2,
+    "name": "Jone Lowe",
+    "has_sale": true,
+    "address": {
+      "city": "Koepphaven",
+      "street_name": "Tanna Branch",
+      "building_number": "52900",
+      "secondary_address": "Apt. 403",
+      "country": "Northern Mariana Islands",
+      "country_code": "SE"
+    },
+    "coffee_id": 5
+  },
+  {
+    "id": 3,
+    "name": "Joette Turcotte",
+    "has_sale": true,
+    "address": {
+      "city": "Lake Shanice",
+      "street_name": "Oleta Light",
+      "building_number": "74661",
+      "secondary_address": "Suite 855",
+      "country": "Korea, Republic of",
+      "country_code": "JM"
+    },
+    "coffee_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Orval Simonis",
+    "has_sale": true,
+    "address": {
+      "city": "East Chieko",
+      "street_name": "Kaitlyn Cliff",
+      "building_number": "5711",
+      "secondary_address": "Suite 855",
+      "country": "Niue",
+      "country_code": "SM"
+    },
+    "coffee_id": 5
+  },
+  {
+    "id": 5,
+    "name": "Cassondra Fahey",
+    "has_sale": true,
+    "address": {
+      "city": "Port Janachester",
+      "street_name": "Gerhold Wall",
+      "building_number": "44823",
+      "secondary_address": "Apt. 298",
+      "country": "Bermuda",
+      "country_code": "VC"
+    },
+    "coffee_id": 2
+  },
+  {
+    "id": 6,
+    "name": "Norine Bosco",
+    "has_sale": true,
+    "address": {
+      "city": "New Vivian",
+      "street_name": "Lilli Street",
+      "building_number": "26795",
+      "secondary_address": "Apt. 849",
+      "country": "Burkina Faso",
+      "country_code": "MZ"
+    },
+    "coffee_id": 7
+  },
+  {
+    "id": 7,
+    "name": "Christin Hammes",
+    "has_sale": true,
+    "address": {
+      "city": "New Sarahview",
+      "street_name": "Joycelyn Trace",
+      "building_number": "2538",
+      "secondary_address": "Apt. 737",
+      "country": "Antigua and Barbuda",
+      "country_code": "BV"
+    },
+    "coffee_id": 4
+  },
+  {
+    "id": 8,
+    "name": "Elmer Ruecker",
+    "has_sale": true,
+    "address": {
+      "city": "New Kathern",
+      "street_name": "Schamberger Run",
+      "building_number": "80657",
+      "secondary_address": "Suite 172",
+      "country": "Lesotho",
+      "country_code": "GI"
+    },
+    "coffee_id": 5
+  },
+  {
+    "id": 9,
+    "name": "Darell Kovacek",
+    "has_sale": true,
+    "address": {
+      "city": "Shanonmouth",
+      "street_name": "Rice View",
+      "building_number": "340",
+      "secondary_address": "Suite 116",
+      "country": "Gabon",
+      "country_code": "PF"
+    },
+    "coffee_id": 4
+  },
+  {
+    "id": 10,
+    "name": "Juan Schamberger",
+    "has_sale": true,
+    "address": {
+      "city": "Hildredmouth",
+      "street_name": "Heller Centers",
+      "building_number": "0285",
+      "secondary_address": "Suite 331",
+      "country": "Svalbard and Jan Mayen",
+      "country_code": "AE"
+    },
+    "coffee_id": 1
+  }
+]

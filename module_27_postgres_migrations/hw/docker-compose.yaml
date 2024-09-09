@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./flask_app
+      dockerfile: Dockerfile
+    container_name: flask_app
+    ports:
+      - "8000:8000"
+#    depends_on:
+#      - postgres
+#    environment:
+#      - DATABASE_URL=postgresql+psycopg2://admin:admin@postgres_db/app.db
+    networks:
+      - app_network
+  postgres:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - log_destination=stderr
+      - logging_collector=on
+    ports:
+      - "5432:5432"
+    volumes:
+#      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./db/:/var/lib/postgresql/data
+#      - ./postgres/logs:/var/log/postgresql
+#    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

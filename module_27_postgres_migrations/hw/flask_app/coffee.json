@@ -1,0 +1,181 @@
+[
+  {
+    "id": 1,
+    "title": "Gumbo File",
+    "origin": "New Marilynnmouth",
+    "intensifier": "lightseagreen",
+    "notes": [
+      "tongue",
+      "prosciutto",
+      "bacon",
+      "beef ribs",
+      "turkey",
+      "drumstick",
+      "doner",
+      "spare ribs",
+      "cow"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Pizza Seasoning",
+    "origin": "East Anne",
+    "intensifier": "lightyellow",
+    "notes": [
+      "ham hock",
+      "strip steak",
+      "sirloin",
+      "tenderloin",
+      "meatloaf",
+      "doner",
+      "landjaeger",
+      "tongue",
+      "porchetta"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Anise Seed",
+    "origin": "North Vicentechester",
+    "intensifier": "darkgray",
+    "notes": [
+        "pork belly",
+        "doner",
+        "ground round",
+        "andouille",
+        "Kevin",
+        "meatloaf",
+        "tri-tip"
+      ]
+    },
+  {
+    "id": 4,
+    "title": "Celery Salt",
+    "origin": "Grimesberg",
+    "intensifier": "darkgrey",
+    "notes": [
+      "meatball",
+      "fatback",
+      "ground round",
+      "porchetta",
+      "tongue",
+      "pork",
+      "chuck",
+      "filet mignon",
+      "meatloaf",
+      "sausage",
+      "pork chop",
+      "pig",
+      "landjaeger",
+      "swine"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Agar agar",
+    "origin": "Cartwrightshire",
+    "intensifier": "lightseagreen",
+    "notes": [
+      "brisket",
+      "pork",
+      "doner",
+      "ham",
+      "pork belly",
+      "pork loin",
+      "pastrami",
+      "flank",
+      "ball tip",
+      "fatback",
+      "turducken"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Thyme",
+    "origin": "East Kanesha",
+    "intensifier": "forestgreen",
+    "notes": [
+      "ribeye",
+      "turkey",
+      "porchetta",
+      "short loin",
+      "spare ribs",
+      "strip steak",
+      "shankle"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Chipolte Pepper",
+    "origin": "Port Bert",
+    "intensifier": "mediumaquamarine",
+    "notes": [
+      "corned beef",
+      "turducken",
+      "flank",
+      "shank",
+      "ground round",
+      "tenderloin",
+      "cow",
+      "chuck",
+      "shoulder"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Chipolte Pepper",
+    "origin": "Lake Waylon",
+    "intensifier": "mediumseagreen",
+    "notes": [
+      "shank",
+      "salami",
+      "hamburger",
+      "ribeye",
+      "jowl",
+      "fatback",
+      "chicken",
+      "jerky",
+      "pastrami",
+      "pig"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Cardamom",
+    "origin": "Baileyfort",
+    "intensifier": "mediumvioletred",
+    "notes": [
+      "ham",
+      "ball tip",
+      "pig",
+      "jerky",
+      "bresaola",
+      "landjaeger",
+      "kielbasa",
+      "salami",
+      "chicken",
+      "rump",
+      "pork loin",
+      "leberkas",
+      "turkey",
+      "Kevin"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Apple Pie Spice",
+    "origin": "Lowellfort",
+    "intensifier": "yellowgreen",
+    "notes": [
+      "pork loin",
+      "leberkas",
+      "spare ribs",
+      "ground round",
+      "jowl",
+      "jerky",
+      "swine",
+      "meatloaf",
+      "pig"
+    ]
+  }
+]
