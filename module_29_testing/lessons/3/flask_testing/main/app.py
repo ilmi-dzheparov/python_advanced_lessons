@@ -13,7 +13,7 @@ def create_app():
 
     from .models import Product, User
 
-    @app.before_first_request
+    @app.before_request
     def before_request_func():
         db.create_all()
 

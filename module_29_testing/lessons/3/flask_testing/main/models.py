@@ -33,3 +33,4 @@ class User(db.Model):
     def to_json(self) -> Dict[str, Any]:
         return {c.name: getattr(self, c.name) for c in
                 self.__table__.columns}
+
