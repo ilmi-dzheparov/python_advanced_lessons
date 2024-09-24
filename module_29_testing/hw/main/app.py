@@ -48,7 +48,8 @@ def create_app():
         """Получение списка всех клиентов"""
         clients = db.session.query(Client).all()
         clients_list = [c.to_json() for c in clients]
-        return jsonify(clients_list)
+        return jsonify(clients_list), 200
+
 
 
     @app.route("/clients/<client_id>", methods=["GET"])
